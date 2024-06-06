@@ -1,0 +1,76 @@
+package quizapplication;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Login extends JFrame implements ActionListener{
+    // coding of frame will be done inside constructor
+    JButton Rules,Exit;
+    JTextField tfname;
+    Login()
+    {
+        getContentPane().setBackground(Color.WHITE);
+         setLayout(null);
+        ImageIcon i1=new ImageIcon(ClassLoader.getSystemResource("icons/quiz.jpg"));
+        JLabel image=new JLabel(i1);
+        image.setBounds(0,0,900,830);
+        add(image);
+        
+        JLabel heading=new JLabel("Lets Start Quiz");
+        heading.setBounds(1050,150,400,60);
+        heading.setFont(new Font("Comic Sans MS",Font.BOLD,50));
+        add(heading);
+        
+        JLabel Name=new JLabel("Enter Your Name");
+       Name.setBounds(1170,250,300,60);
+        Name.setFont(new Font("Times New Roman",Font.BOLD,18));
+        add(Name);
+        
+        tfname=new JTextField();
+        tfname.setBounds(1130, 330, 250, 25);
+        tfname.setFont(new Font("Times New Roman",Font.BOLD,20));
+        add(tfname);
+        
+        Rules=new JButton("Rules");
+        Rules.setBounds(1130,400,120,25);
+        Rules.setBackground(new Color(255,204,0));
+        Rules.addActionListener(this);
+        add(Rules);
+        
+        Exit=new JButton("Exit");
+        Exit.setBounds(1130,470,120,25);
+        Exit.setBackground(new Color(255,204,0));
+        Exit.addActionListener(this);
+        add(Exit);
+        
+        
+      
+       setSize(1700,790);
+        setLocation(0,0);
+        setVisible(true);
+    }
+    
+    public void actionPerformed(ActionEvent ae)
+    {
+        if(ae.getSource()==Rules)
+        {
+            String name=tfname.getText();
+            setVisible(false);
+            new Rules(name);
+        }
+        else if(ae.getSource()==Exit)
+        {
+            setVisible(false);
+        }
+    }
+    public static void main(String[]args)
+    {
+        // create object of login class
+        //Login l=new Login(); 1st method but i dont need l here
+        new Login(); //Anonymus object
+    }
+
+    
+    
+}
